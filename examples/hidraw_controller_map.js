@@ -7,7 +7,7 @@ console.log("Devices found : " + devs);
 
 if (devs.length > 0) {
 	
-	var ven = Vendors[dev[0]];
+	var ven = Vendors[devs[0]];
 	console.log("Choosing Device : " + ven);
 	
     var path = GameController.getDevicePath(ven);
