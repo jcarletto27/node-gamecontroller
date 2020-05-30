@@ -9,9 +9,9 @@ if (devs.length > 0) {
 	
 	var ven = Vendors[devs[0]];
 	console.log(JSON.stringify(ven)); 
-	console.log("Choosing Device : " + ven);
+	console.log("Choosing Device : " + ven[0]);
 	
-    var path = GameController.getDevicePath(ven);
+    var path = GameController.getDevicePath(devs[0]);
 	console.log("Path : " + path);
     var hid = new HID.HID(path);
 
