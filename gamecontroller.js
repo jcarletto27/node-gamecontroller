@@ -29,7 +29,7 @@ function GameController(type) {
 		console.log(this._vendor);
     } else {
         let devs = GameController.getDevices();
-        console.log(devs + " " devs.length);
+        console.log(devs + " " + devs.length);
 		if (devs.length > 0) {
 		
             this._vendor = devs[0];
