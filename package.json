@@ -19,7 +19,7 @@
         "robot"
     ],
     "bin": {
-        "hidraw_controller_output": "./examples/hidraw_controller_raw.js"
+        "hidraw": "./examples/hidraw_controller_raw.js"
     },
     "author": "Robert Eisele <robert@xarg.org> (http://www.xarg.org/)",
     "main": "gamecontroller.js",
