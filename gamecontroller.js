@@ -26,7 +26,7 @@ function GameController(type) {
     if (type) {
         this._vendor = Vendors[type];
     } else {
-        let devs = this.getDevices();
+        let devs = GameController.getDevices();
         if (devs.length > 0) {
             this._vendor = devs[0];
         }
@@ -53,7 +53,7 @@ GameController.prototype = {
 
             try {
                 //get vendors rawpath
-                let raw_path = this.getDevicePath(ven);
+                let raw_path = GameController.getDevicePath(ven);
                 if (raw_path != "") {
                     this._hid = new HID.HID(raw_path);
                 }
