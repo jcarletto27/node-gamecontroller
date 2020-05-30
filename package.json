@@ -1,5 +1,5 @@
 {
-    "name": "gamecontroller",
+    "name": "gamecontroller-hidraw",
     "homepage": "https://github.com/infusion/node-gamecontroller",
     "bugs": "https://github.com/infusion/node-gamecontroller/issues",
     "title": "gamecontroller",

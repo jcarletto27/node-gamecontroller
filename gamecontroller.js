@@ -31,6 +31,7 @@ function GameController(type) {
         //gets currently supported devices
         let devs = GameController.getDevices();
         if (devs.length > 0) {
+			console.log(JSON.stringify(devs));
             //if multiple selected, will pick first
             this._vendor = Vendors[devs[0]];
         }
