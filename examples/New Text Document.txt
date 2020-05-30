@@ -1,8 +1,0 @@
-var GameController = require('../gamecontroller.js');
-
-var dev = GameController.getDevices();
-
-for( let i =0; i < dev.length; i++){
-var path = GameController.getDevicePath(dev[i]);
-console.log(dev[i] + " : " + path);
-}

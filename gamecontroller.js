@@ -18,20 +18,20 @@ const Vendors = require('./lib/vendors.js');
 const util = require('util');
 
 function GameController(type) {
-	console.log(type);
 
     if (!(this instanceof GameController)) {
         return new GameController(type);
     }
 
+	//checks for empty or undefined type value
     if (type != "" && type != undefined) {
         this._vendor = Vendors[type];
-		console.log(this._vendor);
     } else {
+	
+		//gets currently supported devices
         let devs = GameController.getDevices();
-        console.log(devs + " " + devs.length);
 		if (devs.length > 0) {
-		
+			//if multiple selected, will pick first
             this._vendor = Vendors[devs[0]];
         }
 
