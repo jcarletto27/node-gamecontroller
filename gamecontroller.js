@@ -98,16 +98,18 @@ GameController.prototype = {
                 if (sp[0] === 'axis') {
 
                     let Ykey = sp[0] + ':' + sp[1] + ':Y';
-					let Xkey = sp[0] + ':' + sp[1] + ':X';
+                    let Xkey = sp[0] + ':' + sp[1] + ':X';
 
                     if (sp[2] === 'X' && (ns !== os ||  newState[Ykey] !== oldState[Ykey])) {
                         pass.x = ns;
                         pass.y = newState[Ykey];
-                        self.emit(sp[1] + ':move', JSON.stringify(pass));
-						
+
                     } else if (sp[2] === 'Y' && (ns !== os ||  newState[Xkey] !== oldState[Xkey])) {
                         pass.x = newState[Xkey];
                         pass.y = ns;
+
+                    }
+                    if (ns != os) {
                         self.emit(sp[1] + ':move', JSON.stringify(pass));
                     }
                 } else if (os !== ns) {
