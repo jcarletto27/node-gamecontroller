@@ -31,9 +31,10 @@ function GameController(type) {
         //gets currently supported devices
         let devs = GameController.getDevices();
         if (devs.length > 0) {
-			console.log(JSON.stringify(devs));
+            console.log(JSON.stringify(devs));
             //if multiple selected, will pick first
-            this._vendor = Vendors[devs[0]];
+            this._vendor = Vendors[devs[0]]
+                console.log("Chose this vendor: " + JSON.stringify(this._vendor));
         }
 
     }
@@ -50,9 +51,9 @@ GameController.prototype = {
         try {
 
             let raw_path = GameController.getDevicePath(ven);
-            if (raw_path != "") {
-                this._hid = new HID.HID(raw_path);
-            }
+
+            this._hid = new HID.HID(raw_path);
+
         } catch (e) {
             this.emit('error', e);
             return;
