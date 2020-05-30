@@ -51,6 +51,7 @@ GameController.prototype = {
         try {
 
             let raw_path = GameController.getDevicePath(ven);
+			console.log("Attempting raw path - "  + raw_path);
 
             this._hid = new HID.HID(raw_path);
 
