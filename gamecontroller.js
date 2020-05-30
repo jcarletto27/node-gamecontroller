@@ -45,6 +45,17 @@ GameController.prototype = {
         } else {
 
             try {
+                //get vendors rawpath
+				let raw_path = this.getDevicePath(ven);
+				if(raw_path != ""){
+				this._hid = new HID.HID(raw_path);
+				}
+            } catch (e) {
+                
+                //
+            }
+
+            try {
                 this._hid = new HID.HID(ven.vendorId, ven.productId);
             } catch (e) {
                 this.emit('error', e);
@@ -128,6 +139,21 @@ GameController.getDevices = function () {
         }
     }
     return ret;
+};
+
+GameController.getDevicePath = function (venName) {
+    let dev = HID.devices();
+
+    for (let i = 0; i < dev.length; i++) {
+
+        for (let ven in Vendors) {
+
+            if (Vendors[ven].productId === dev[i].productId && Vendors[ven].vendorId === dev[i].vendorId && ven === venName) {
+                return dev[i].path;
+            }
+        }
+    }
+    return "";
 };
 
 module.exports = GameController;
