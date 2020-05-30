@@ -32,7 +32,7 @@ function GameController(type) {
         console.log(devs + " " + devs.length);
 		if (devs.length > 0) {
 		
-            this._vendor = devs[0];
+            this._vendor = Vendors[devs[0]];
         }
 
     }
