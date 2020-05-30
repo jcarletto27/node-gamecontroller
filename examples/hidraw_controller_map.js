@@ -3,7 +3,7 @@ var HID = require('node-hid');
 const Vendors = require('../lib/vendors.js');
 
 var devs = GameController.getDevices();
-console.log("Devices found : " + devs);
+console.log("Devices found : " + JSON.stringify(devs));
 
 if (devs.length > 0) {
 	
