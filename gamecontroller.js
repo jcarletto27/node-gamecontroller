@@ -103,11 +103,12 @@ GameController.prototype = {
                     if (sp[2] === 'X' && (ns !== os ||  newState[Ykey] !== oldState[Ykey])) {
                         pass.x = ns;
                         pass.y = newState[Ykey];
-                        self.emit(sp[1] + ':move', pass);
+                        self.emit(sp[1] + ':move', pass.toString());
+						
                     } else if (sp[2] === 'Y' && (ns !== os ||  newState[Xkey] !== oldState[Xkey])) {
                         pass.x = newState[Xkey];
                         pass.y = ns;
-                        self.emit(sp[1] + ':move', pass);
+                        self.emit(sp[1] + ':move', pass.toString());
                     }
                 } else if (os !== ns) {
 
