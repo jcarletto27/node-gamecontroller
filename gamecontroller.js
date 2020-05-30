@@ -18,6 +18,7 @@ const Vendors = require('./lib/vendors.js');
 const util = require('util');
 
 function GameController(type) {
+	console.log(type);
 
     if (!(this instanceof GameController)) {
         return new GameController(type);
@@ -25,9 +26,12 @@ function GameController(type) {
 
     if (type != "" && type != undefined) {
         this._vendor = Vendors[type];
+		console.log(this._vendor);
     } else {
         let devs = GameController.getDevices();
-        if (devs.length > 0) {
+        console.log(devs);
+		if (devs.length > 0) {
+		
             this._vendor = devs[0];
         }
 
