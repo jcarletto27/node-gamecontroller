@@ -23,7 +23,7 @@ function GameController(type) {
         return new GameController(type);
     }
 
-    if (type) {
+    if (type != "" && type != undefined) {
         this._vendor = Vendors[type];
     } else {
         let devs = GameController.getDevices();
