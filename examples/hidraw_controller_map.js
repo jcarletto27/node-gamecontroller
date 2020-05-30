@@ -1,6 +1,6 @@
 var GameController = require('../gamecontroller.js');
 var HID = require('node-hid');
-const Vendors = require('./lib/vendors.js');
+const Vendors = require('../lib/vendors.js');
 
 console.log(HID.devices());
 
