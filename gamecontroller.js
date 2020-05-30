@@ -44,7 +44,7 @@ function GameController(type) {
 }
 
 GameController.prototype = {
-    _vendorName: null;
+    _vendorName: null,
     _hid: null,
     _vendor: null,
     connect: function (cb) {
