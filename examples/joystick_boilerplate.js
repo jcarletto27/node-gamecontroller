@@ -83,11 +83,10 @@ gc.on('R2:press', function (o) {
     console.log("Pressed : R2");
 });
 
-
 gc.on('JOYL:move', function (o) {
-    console.log(o);
+    console.log("Left Joystick : " + o);
 });
 
 gc.on('JOYR:move', function (o) {
-    console.log(o);
+    console.log("Right Joystick : " + o);
 });

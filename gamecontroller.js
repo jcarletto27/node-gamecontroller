@@ -23,15 +23,15 @@ function GameController(type) {
         return new GameController(type);
     }
 
-	//checks for empty or undefined type value
+    //checks for empty or undefined type value
     if (type != "" && type != undefined) {
         this._vendor = Vendors[type];
     } else {
-	
-		//gets currently supported devices
+
+        //gets currently supported devices
         let devs = GameController.getDevices();
-		if (devs.length > 0) {
-			//if multiple selected, will pick first
+        if (devs.length > 0) {
+            //if multiple selected, will pick first
             this._vendor = Vendors[devs[0]];
         }
 
@@ -98,10 +98,15 @@ GameController.prototype = {
                 if (sp[0] === 'axis') {
 
                     let Ykey = sp[0] + ':' + sp[1] + ':Y';
+					let Xkey = sp[0] + ':' + sp[1] + ':X';
 
                     if (sp[2] === 'X' && (ns !== os ||  newState[Ykey] !== oldState[Ykey])) {
                         pass.x = ns;
                         pass.y = newState[Ykey];
+                        self.emit(sp[1] + ':move', pass);
+                    } else if (sp[2] === 'Y' && (ns !== os ||  newState[Xkey] !== oldState[Xkey])) {
+                        pass.x = newState[Xkey];
+                        pass.y = ns;
                         self.emit(sp[1] + ':move', pass);
                     }
                 } else if (os !== ns) {
