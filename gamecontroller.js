@@ -23,8 +23,15 @@ function GameController(type) {
         return new GameController(type);
     }
 
-    this._vendor = Vendors[type];
+    if (type) {
+        this._vendor = Vendors[type];
+    } else {
+        let devs = this.getDevices();
+        if (devs.length > 0) {
+            this._vendor = devs[0];
+        }
 
+    }
     EventEmitter.call(this);
     process.on('exit', this.close.bind(this));
 }
@@ -46,13 +53,13 @@ GameController.prototype = {
 
             try {
                 //get vendors rawpath
-				let raw_path = this.getDevicePath(ven);
-				if(raw_path != ""){
-				this._hid = new HID.HID(raw_path);
-				}
+                let raw_path = this.getDevicePath(ven);
+                if (raw_path != "") {
+                    this._hid = new HID.HID(raw_path);
+                }
             } catch (e) {
-                
-                //
+                this.emit('error', e);
+                return;
             }
 
             try {
