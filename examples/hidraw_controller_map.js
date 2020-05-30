@@ -1,10 +1,17 @@
+var GameController = require('../gamecontroller.js');
 var HID = require('node-hid');
+const Vendors = require('./lib/vendors.js');
+
 console.log(HID.devices());
 
+var devs = GameController.getDevices();
+if (devs.length > 0) {
+    var path = GameController.getDevicePath(Vendors[devs[0]]);
 
-//specify the hidraw path listed from HID.devices();
-var hid = new HID.HID("/dev/hidraw0");
-//var hid = new HID.HID('1673','1026');
-hid.on("data", function (data) {
-    console.log(data);
-});
+    var hid = new HID.HID(path);
+
+    hid.on("data", function (data) {
+        console.log(data);
+    });
+
+}

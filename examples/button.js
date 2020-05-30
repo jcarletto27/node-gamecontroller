@@ -1,7 +1,7 @@
 
 var GameController = require('../gamecontroller.js');
 
-var gc = new GameController('ps2');
+var gc = new GameController();
 
 gc.connect();
 

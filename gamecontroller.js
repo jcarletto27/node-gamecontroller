@@ -46,33 +46,15 @@ GameController.prototype = {
     connect: function (cb) {
         let ven = this._vendor;
 
-        if (ven.raw_path) {
-            try {
-                this._hid = new HID.HID(ven.raw_path);
-            } catch (e) {
-                this.emit('error', e);
-                return;
-            }
-        } else {
+        try {
 
-            try {
-                //get vendors rawpath
-                let raw_path = GameController.getDevicePath(ven);
-                if (raw_path != "") {
-                    this._hid = new HID.HID(raw_path);
-                }
-            } catch (e) {
-                this.emit('error', e);
-                return;
+            let raw_path = GameController.getDevicePath(ven);
+            if (raw_path != "") {
+                this._hid = new HID.HID(raw_path);
             }
-
-            try {
-                this._hid = new HID.HID(ven.vendorId, ven.productId);
-            } catch (e) {
-                this.emit('error', e);
-                return;
-            }
-
+        } catch (e) {
+            this.emit('error', e);
+            return;
         }
 
         let hid = this._hid;
