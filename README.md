@@ -11,7 +11,7 @@ Gamecontroller.js is a small layer on top of HID to interact with any USB game c
 Installation
 ===
 
-Installing node-gamecontroller is as easy as cloning this repo or use npmjs:
+Clone the repo and CD to the main directory
 
 ```bash
 npm install gamecontroller
