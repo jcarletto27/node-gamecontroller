@@ -33,6 +33,7 @@ function GameController(type) {
         if (devs.length > 0) {
             console.log(JSON.stringify(devs));
             //if multiple selected, will pick first
+            this._vendorName = devs[0];
             this._vendor = Vendors[devs[0]]
 
         }
@@ -43,15 +44,17 @@ function GameController(type) {
 }
 
 GameController.prototype = {
+    _vendorName: null;
     _hid: null,
     _vendor: null,
     connect: function (cb) {
         let ven = this._vendor;
-
+        let venName = this._vendorName;
         try {
-            console.log("Chose this vendor: " + JSON.stringify(ven));
+            console.log("Chose this vendor: " + ven.vendorId + " : " + venName);
 
-            let raw_path = GameController.getDevicePath(ven);
+            let raw_path = GameController.getDevicePath(venName);
+
             console.log("Attempting raw path - " + raw_path);
 
             this._hid = new HID.HID(raw_path);
